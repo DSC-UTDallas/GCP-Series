@@ -14,8 +14,7 @@ Once this lab is complete, you will be able to select text in a document and mar
 In today's workshop, we will go over the following concepts in GCP and GSuite:
 - [Setting Up a Google Cloud Project](https://www.youtube.com/watch?v=PNONlivvNtY)
 - Setting Up your Google Doc
-- Enabling the Natural Language API
-- Getting an API Key
+- Setting Up the Natural Language API
 - Calling the Natural Language API
 
 ## Let's get started then!!🤓
