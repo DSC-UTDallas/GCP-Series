@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SetupGSuite.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="setting-up-your-google-doc">Setting up your Google Doc</h1>
+<p>Before you can call the Natural Language API, you'll make an Apps Script program to create the menu, link it to a function to mark the text, and extract the text from the user selection.</p>
+<ol>
+<li>
+<p>Create a <a href="https://docs.google.com/document/create">new Google Doc</a>.</p>
+</li>
+<li>
+<p>From within your new document, select the menu item <strong>Tools &gt; Script editor</strong>. If you are presented with a welcome screen, click <strong>Blank Project</strong>.</p>
+</li>
+<li>
+<p>Delete any code in the script editor and paste in the code below. This code will create a menu item, extract the text from the current selected text, and highlight the text based on its sentiment. It does not call the Natural Language API yet.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>
+/**
+* @OnlyCurrentDoc
+*
+* The above comment directs Apps Script to limit the scope of file
+* access for this add-on. It specifies that this add-on will only
+* attempt to read or modify the files in which the add-on is used,
+* and not all of the user's files. The authorization request message
+* presented to users will reflect this limited scope.
+*/
+
+/**
+* Creates a menu entry in the Google Docs UI when the document is
+* opened.
+*
+*/
+function onOpen() {
+  var ui = DocumentApp.getUi();
+
+  ui.createMenu('Natural Language Tools')
+    .addItem('Mark Sentiment', 'markSentiment')
+    .addToUi();
+}
+
+/**
+* Gets the user-selected text and highlights it based on sentiment
+* with green for positive sentiment, red for negative, and yellow
+* for neutral.
+*
+*/
+function markSentiment() {
+  var POSITIVE_COLOR = '#00ff00';  //  Colors for sentiments
+  var NEGATIVE_COLOR = '#ff0000';
+  var NEUTRAL_COLOR = '#ffff00';
+  var NEGATIVE_CUTOFF = -0.2;   //  Thresholds for sentiments
+  var POSITIVE_CUTOFF = 0.2;
+
+  var selection = DocumentApp.getActiveDocument().getSelection();
+  if (selection) {
+    var string = getSelectedText();
+
+    var sentiment = retrieveSentiment(string);
+
+    //  Select the appropriate color
+    var color = NEUTRAL_COLOR;
+    if (sentiment &lt;= NEGATIVE_CUTOFF) {
+      color = NEGATIVE_COLOR;
+    }
+    if (sentiment &gt;= POSITIVE_CUTOFF) {
+      color = POSITIVE_COLOR;
+    }
+
+    //  Highlight the text
+    var elements = selection.getSelectedElements();
+    for (var i = 0; i &lt; elements.length; i++) {
+      if (elements[i].isPartial()) {
+        var element = elements[i].getElement().editAsText();
+        var startIndex = elements[i].getStartOffset();
+        var endIndex = elements[i].getEndOffsetInclusive();
+        element.setBackgroundColor(startIndex, endIndex, color);
+
+      } else {
+        var element = elements[i].getElement().editAsText();
+        foundText = elements[i].getElement().editAsText();
+        foundText.setBackgroundColor(color);
+      }
+    }
+  }
+}
+
+/**
+ * Returns a string with the contents of the selected text.
+ * If no text is selected, returns an empty string.
+ */
+function getSelectedText() {
+  var selection = DocumentApp.getActiveDocument().getSelection();
+  var string = &quot;&quot;;
+  if (selection) {
+    var elements = selection.getSelectedElements();
+
+    for (var i = 0; i &lt; elements.length; i++) {
+      if (elements[i].isPartial()) {
+        var element = elements[i].getElement().asText();
+        var startIndex = elements[i].getStartOffset();
+        var endIndex = elements[i].getEndOffsetInclusive() + 1;
+        var text = element.getText().substring(startIndex, endIndex);
+        string = string + text;
+
+      } else {
+        var element = elements[i].getElement();
+        // Only translate elements that can be edited as text; skip
+        // images and other non-text elements.
+        if (element.editAsText) {
+          string = string + element.asText().getText();
+        }
+      }
+    }
+  }
+  return string;
+}
+
+/** Given a string, will call the Natural Language API and retrieve
+  * the sentiment of the string.  The sentiment will be a real
+  * number in the range -1 to 1, where -1 is highly negative
+  * sentiment and 1 is highly positive.
+*/
+function retrieveSentiment (line) {
+//  TODO:  Call the Natural Language API with the line given and return the sentiment value.
+  return 0.0;
+}
+</div></code></pre>
+<ol start="4">
+<li>
+<p>Select the menu item <strong>File &gt; Save all</strong>. Name your new script <strong>Natural Language Tools</strong> and click <strong>OK</strong>. (The script's name is shown to end users in several places, including the authorization dialog.)</p>
+</li>
+<li>
+<p>Return to your document. Add text to your document. You can use the sample that comes from Alice in Wonderland on Project Gutenberg (copy and paste the Plain Text UTF-8 version into the document), but feel free to use any text you wish.</p>
+</li>
+<li>
+<p>Reload the document to see the new menu, <strong>Natural Language Tools</strong>, which you created, appear in the Google Docs toolbar.</p>
+</li>
+<li>
+<p>Select text and then the <strong>Mark Sentiment</strong> option from the Natural Language Tools menu. The first time you select this option, you will be prompted to authorize the script to run. Click <strong>Authorize</strong>, and then log in with your credentials.</p>
+</li>
+<li>
+<p>Allow Natural Language Tools to view and manage documents that this application has been installed in.</p>
+</li>
+<li>
+<p>Once the script is authorized, the selected text will be highlighted in yellow, since the stub for sentiment analysis always returns 0.0, which is neutral.</p>
+</li>
+</ol>
+
+</body>
+</html>
