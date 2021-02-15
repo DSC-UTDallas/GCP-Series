@@ -12,7 +12,7 @@ Once this lab is complete, you will be able to select text in a document and mar
 <img src="https://cdn.qwiklabs.com/vXt7L2%2BkcNJro4KFPO%2FrCeF4d%2FAyzY437h%2BZCU4G15A%3D" width="450" alt="Project Screenshot 1">  <img src="https://cdn.qwiklabs.com/kn9C0A%2Fjpts9VsoMHsOeiF%2B8u%2BHVCzV9KzsCqHSy6S0%3D" width="450" alt="Project 2">
 
 In today's workshop, we will go over the following concepts in GCP and GSuite:
-- [Setting Up a Google Cloud Project](https://www.youtube.com/watch?v=PNONlivvNtY)
+- [Setting Up a Google Cloud Project](https://youtu.be/9uvWF1CU_kc)
 - Setting Up your Google Doc
 - Setting Up the Natural Language API
 - Calling the Natural Language API
