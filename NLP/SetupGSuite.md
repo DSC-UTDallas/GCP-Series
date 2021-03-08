@@ -32,6 +32,9 @@ function onOpen() {
     .addItem('Mark Sentiment', 'markSentiment')
     .addToUi();
 }
+```
+
+```
 
 /**
 * Gets the user-selected text and highlights it based on sentiment
@@ -79,6 +82,10 @@ function markSentiment() {
   }
 }
 
+```
+
+```
+
 /**
  * Returns a string with the contents of the selected text.
  * If no text is selected, returns an empty string.
@@ -109,6 +116,10 @@ function getSelectedText() {
   }
   return string;
 }
+
+```
+
+```
 
 /** Given a string, will call the Natural Language API and retrieve
   * the sentiment of the string.  The sentiment will be a real
