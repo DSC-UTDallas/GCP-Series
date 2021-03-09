@@ -8,7 +8,7 @@ You can always come to TrackIT to get access to the material.
 
 Our next workshop is a collab with ACM Education about **Creating a Discord Bot on Compute Engine** on March 9, 7PM
 
-RSVP Here: [bit.ly/DSC-ExploreML](bit.ly/DSC-ExploreML)
+RSVP Here: [https://dsc.community.dev/events/details/developer-student-clubs-university-of-texas-at-dallas-presents-gcp-series-creating-a-discord-bot-on-compute-engine/#/](https://dsc.community.dev/events/details/developer-student-clubs-university-of-texas-at-dallas-presents-gcp-series-creating-a-discord-bot-on-compute-engine/#/)
 
 Hope we see you all there! 🤗
 
