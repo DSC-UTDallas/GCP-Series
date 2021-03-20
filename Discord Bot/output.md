@@ -68,6 +68,6 @@
             await message.channel.send(embed=weather_message(data, location))
     ```
 
-    6. When we run our Code and type in !weather Dallas we should get an output with current weather data.
+6. When we run our Code and type in !weather Dallas we should get an output with current weather data.
     
-    7. Congratulations!!!🎊. The discord bot is now running like it should but it is not running 24/7 only when we are running the program from our terminal. 
+7. Congratulations!!!🎊. The discord bot is now running like it should but it is not running 24/7 only when we are running the program from our terminal. 
