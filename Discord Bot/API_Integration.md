@@ -9,7 +9,7 @@ Before we use OpenWeather's API we would need their API Key for current data.
     api_key = "your_token"
     ```
 
-2. We setup the discord command that triggers getting the weather data. Under the on_message function we add another if statement.
+2. We setup the discord command that triggers getting the weather data. Under the **on_message()** function we add another if statement.
     ```
     if message.content.startswith('!weather'):
         location = message.content.replace('!weather', '').lower()
