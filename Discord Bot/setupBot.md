@@ -9,6 +9,7 @@
     import discord
     import requests
     import json
+    from pprint import pprint
     ```
 
 3. Connect to the discord client and use the Token from the Discord Developer Account to get the bot up and running
