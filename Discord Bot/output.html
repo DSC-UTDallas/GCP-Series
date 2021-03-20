@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Wrapping up the Discord Bot</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="wrapping-up-the-discord-bot">Wrapping up the Discord Bot</h1>
+<h2 id="parsing-out-extraneous-information">Parsing out Extraneous Information</h2>
+<ol>
+<li>
+<p>Looking at the Output on the console we notice that our useful information lies under the <strong>'main'</strong> key of our JSON output. We are going to restrict our information only to that field then. Even in the main key we do not need humidity and pressure so we can go ahead and delete those.</p>
+</li>
+<li>
+<p>We add another function called parse_weather_data()</p>
+<pre><code><code><div>def parse_weather_data(data):
+    data = data['main']
+    del data['humidity']
+    del data['pressure']
+    return data
+</div></code></code></pre>
+</li>
+</ol>
+<h2 id="displaying-the-message-on-discord">Displaying the Message on Discord</h2>
+<ol>
+<li>
+<p>Currently the info comes in as temp, feels_like, temp_min and temp_max but I want to change the way the name outputs so we create a dictionary called name_change that takes in the original name as key and the name we want to display as value</p>
+<pre><code><code><div>name_change = {
+    'temp': 'Current Temperature',
+    'feels_like': 'Feels Like',
+    'temp_min': 'Minimum Temperature',
+    'temp_max': 'Maximum Temperature'
+}
+</div></code></code></pre>
+</li>
+<li>
+<p>We are going to create another function <strong>weather_message()</strong> that returns a discord message displaying the data we have got from the <strong>parse_weather_data()</strong> function.</p>
+<pre><code><code><div>def weather_message(data, location):
+    location = location.title()
+    message = discord.Embed(
+        title=f'{location} Weather',
+        description=f'Weather For {location}.',
+        color=color_scheme
+    ) # Information that will be sent on discord
+    for key in data:
+        message.add_field(name=name_change[key], value=str(data[key]), inline=False)
+    return message
+</div></code></code></pre>
+</li>
+<li>
+<p>Now that we have everything setup let us call these functions back in the <strong>on_message()</strong> function</p>
+</li>
+<li>
+<p>Pass the initial data to the <strong>parse_weather_data()</strong> function and then send the message to the user on the discord server. Our final if statement in the <strong>on_message()</strong> function should look like this.</p>
+<pre><code><code><div>if message.content.startswith('!weather'):
+    location = message.content.replace('!weather', '').lower()
+    init_data = get_weather(location)
+    data = parse_weather_data(init_data)
+    await message.channel.send(embed=weather_message(data, location))
+</div></code></code></pre>
+</li>
+<li>
+<p>This is the final code for the <strong>on_message()</strong> function</p>
+<pre><code><code><div>@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('!hello'):
+        await message.channel.send(&quot;Hello World&quot;)
+    if message.content.startswith('!apicall'):
+        temp = get_weather(&quot;Dallas&quot;)  # Has to be Replaced with the String extracted from User Input
+        await message.channel.send(&quot;The Temperature in this city is {}&quot;.format(temp))
+    if message.content.startswith('!weather'):
+        location = message.content.replace('!weather', '').lower()
+        init_data = get_weather(location)
+        data = parse_weather_data(init_data)
+        await message.channel.send(embed=weather_message(data, location))
+</div></code></code></pre>
+</li>
+<li>
+<p>When we run our Code and type in !weather Dallas we should get an output with current weather data.</p>
+</li>
+<li>
+<p>Congratulations!!!🎊. The discord bot is now running like it should but it is not running 24/7 only when we are running the program from our terminal.</p>
+</li>
+</ol>
+
+    </body>
+    </html>

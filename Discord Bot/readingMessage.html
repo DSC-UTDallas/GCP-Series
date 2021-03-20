@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Replying to User Commands</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="replying-to-user-commands">Replying to User Commands</h1>
+<p>Before we go ahead and use OpenWeather's API let us do a Quick Hello World in <a href="http://Discord.py">Discord.py</a></p>
+<ol>
+<li>
+<p>The function in the <a href="http://discord.py">discord.py</a> library that allows listening to commands is <strong>on_message()</strong>:</p>
+</li>
+<li>
+<p>The following code goes ahead and adds code to reply to the user when they type in !hello in discord</p>
+<pre><code><code><div>@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith(!hello):
+        await message.channel.send(&quot;Hello World&quot;)
+</div></code></code></pre>
+</li>
+<li>
+<p>When we start the program and the bot starts up if we type in !hello. The bot returns us with &quot;Hello World&quot;</p>
+</li>
+</ol>
+
+    </body>
+    </html>

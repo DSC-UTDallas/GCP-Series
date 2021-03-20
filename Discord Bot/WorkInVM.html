@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Setting Up the Bot on the VM</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="setting-up-the-bot-on-the-vm">Setting Up the Bot on the VM</h1>
+<ol>
+<li>Install <a href="http://discord.py">discord.py</a> and other requirements on the VM</li>
+</ol>
+<pre><code><code><div>pip install -U discord requests
+</div></code></code></pre>
+<ol start="2">
+<li>Create a python file using your preferred command line editor and copy your code into there.</li>
+</ol>
+<p>If you are using vim, you open/create a file using <code>vim &lt;filename&gt;</code>. To go into edit mode, click <code>i</code>. To save your file, click <code>ESC</code> followed by typing <code>:wq</code> and then pressing enter.</p>
+<ol start="3">
+<li>Install tmux using <code>sudo apt install tmux</code>.</li>
+<li>Create a tmux session by typing in <code>tmux new -s mysession</code>.</li>
+<li>Run your bot file using <code>python3 filename</code></li>
+<li>If you close out of your terminal, you'll notice that the bot is still running.</li>
+<li>If you want to go into your tmux session again, type in <code>tmux attach -t mysession</code> and if you want to kill a session, type in <code>tmux kill-session -t mysession</code>.</li>
+</ol>
+<p>A list of all tmux commands is avaible on <a href="https://tmuxcheatsheet.com">https://tmuxcheatsheet.com</a>.</p>
+
+    </body>
+    </html>

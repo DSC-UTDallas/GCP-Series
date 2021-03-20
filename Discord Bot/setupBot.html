@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Getting the Bot Up and Running</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="getting-the-bot-up-and-running">Getting the Bot Up and Running</h1>
+<h2 id="adding-the-initial-code">Adding the Initial Code</h2>
+<ol>
+<li>
+<p>Create a new python file:</p>
+</li>
+<li>
+<p>Import discord, requests and json</p>
+<pre><code><code><div>import discord
+import requests
+import json
+from pprint import pprint
+</div></code></code></pre>
+</li>
+<li>
+<p>Connect to the discord client and use the Token from the Discord Developer Account to get the bot up and running</p>
+<pre><code><code><div>client = discord.client()
+client.run(&quot;Your_Token&quot;)
+</div></code></code></pre>
+</li>
+<li>
+<p>Now we will go and add the on_ready() method. This method notifies us when the discord bot becomes online. <a href="http://Discord.py">Discord.py</a> is an asynchronous library so we use async and await in our function.</p>
+<pre><code><code><div>@client.event
+async def on_ready():
+    await client.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.listening, name='Providing Weather'))
+    print(&quot;Weather Bot has logged in as {0.user}&quot;.format(client))
+</div></code></code></pre>
+</li>
+<li>
+<p>Let's Run our Program Now:</p>
+</li>
+</ol>
+
+    </body>
+    </html>

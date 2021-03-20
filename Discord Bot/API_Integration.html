@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Working with OpenWeather API</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="working-with-openweather-api">Working with OpenWeather API</h1>
+<p>Before we use OpenWeather's API we would need their API Key for current data.</p>
+<h2 id="coding-in-the-functionality-for-the-weather-command">Coding in the functionality for the !weather command</h2>
+<ol>
+<li>
+<p>We add the api key from OpenWeather</p>
+<pre><code><code><div>api_key = &quot;your_token&quot;
+</div></code></code></pre>
+</li>
+<li>
+<p>We setup the discord command that triggers getting the weather data. Under the <strong>on_message()</strong> function we add another if statement.</p>
+<pre><code><code><div>if message.content.startswith('!weather'):
+    location = message.content.replace('!weather', '').lower()
+    init_data = get_weather(location)
+</div></code></code></pre>
+</li>
+</ol>
+<h2 id="retrieving-data-using-the-openweather-api">Retrieving Data using the OpenWeather API</h2>
+<ol>
+<li>
+<p>To retrieve data from OpenWeather API navigate to the website <a href="https://openweathermap.org/api">OpenWeather</a> and click the API doc button for Current Weather Data.</p>
+</li>
+<li>
+<p>In the list of API Calls by city name. Copy the first API call</p>
+</li>
+<li>
+<p>In the get_weather() function we use this copied API call and just extract the city data.</p>
+<pre><code><code><div>def get_weather(city_name):
+    if len(city_name) &gt;= 1:
+        url = f'http://api.openweathermap.org/data/2.5/weather?q={city_name}&amp;appid={api_key}&amp;units=imperial'
+        data = json.loads(requests.get(url).content)  # Getting the Data from the URL
+        pprint(data)
+    return data
+</div></code></code></pre>
+</li>
+<li>
+<p>At this point if we run our bot and type in &quot;!weather&quot; followed by the city name we will get a console output that has data of the region from wind_speed to the locations coordinates.</p>
+</li>
+<li>
+<p>We need to only keep the temperature info and have to now display that output in our discord server</p>
+</li>
+</ol>
+
+    </body>
+    </html>
