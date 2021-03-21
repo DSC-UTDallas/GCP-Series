@@ -14,7 +14,7 @@
 
 3. Connect to the discord client and use the Token from the Discord Developer Account to get the bot up and running
     ```
-    client = discord.client()
+    client = discord.Client()
     client.run("Your_Token")
     ```
 
