@@ -10,5 +10,6 @@ Do join us on our social media platforms:
 - DSC Discord: https://discord.gg/xZ3MwHj 
 - DSC Mailing List: https://forms.gle/fHkai3qWopmpq6UR9
 - DSC Portal: https://dsc.community.dev/university-of-texas-at-dallas/
-- ACM Discord: http://acmutd.co/discord
+- ACM Discord: http://www.acmutd.co/discord
 - ACM Mailing List: https://www.acmutd.co/mailing
+- ACM Portal: https://portal.acmutd.co/
